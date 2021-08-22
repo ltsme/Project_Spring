@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="com.watchdogs.dao.LookupIdDao">
+<mapper namespace="com.watchdogs.dao.DaoLookupId">
 
 	<select id="lookupiddao" resultType="com.watchdogs.dto.DtoUser">
 		SELECT USERID FROM USER WHERE USEREMAIL=#{param1} AND USERNAME=#{param2}

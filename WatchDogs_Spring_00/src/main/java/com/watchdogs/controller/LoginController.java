@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.watchdogs.command.login.LoginCheckCommand;
 import com.watchdogs.command.lookup.LookUpIdCommand;
+import com.watchdogs.command.lookup.LookUpPwCommand;
 import com.watchdogs.command.signup.SignUpCommand;
 
 @Controller
@@ -22,6 +23,7 @@ public class LoginController {
 	private LoginCheckCommand loginCheckCommand = new LoginCheckCommand();
 	private SignUpCommand signUpCommand = new SignUpCommand();
 	private LookUpIdCommand lookUpIdCommand = new LookUpIdCommand();
+	private LookUpPwCommand lookUpPwCommand = new LookUpPwCommand();
 
 //	//값 보내는 법! 최근방식
 //	@RequestMapping("board/content")
@@ -33,11 +35,11 @@ public class LoginController {
 	@RequestMapping("/home")
 	 public String home(HttpServletRequest httpServletRequest, Model model) {
 		
-			// 아이디, 유저 타입 받음
+			//받음
 			String id = httpServletRequest.getParameter("userid");
 			String userType = httpServletRequest.getParameter("usertype");
 			
-			// 아이디, 유저 타입 보냄
+			//보냄
 			model.addAttribute("userid", id);
 			model.addAttribute("usertype", userType);
 			
@@ -51,6 +53,7 @@ public class LoginController {
 		String id = httpServletRequest.getParameter("userid");
 		String userType = httpServletRequest.getParameter("usertype");
 		
+		//보냄
 		model.addAttribute("userid", id);
 		model.addAttribute("usertype", userType);
 		
@@ -88,6 +91,12 @@ public class LoginController {
 		return "logout";
 	}
 	
+	
+	@RequestMapping("/help")
+	public String help() {
+		return "help";
+	}
+	
 	@RequestMapping("/signup")
 	public String signup(Model model) {
 		//보냄
@@ -107,16 +116,13 @@ public class LoginController {
 		model.addAttribute("userid", "");
 		model.addAttribute("usertype", "");
 		
-		return "home";
+		return "signuppop";
 	}
 	
-	@RequestMapping("/help")
-	public String help() {
-		return "help";
-	}
 	
 	@RequestMapping("/lookupidpw")
 	public String lookupidpw(Model model) {
+
 		//보냄
 		model.addAttribute("userid", "");
 		model.addAttribute("usertype", "");
@@ -127,55 +133,27 @@ public class LoginController {
 	public String lookupidfunction (Model model, HttpServletRequest request, HttpSession httpSession) {
 		
 		model.addAttribute("request", request);
-		System.out.println("1");
 		lookUpIdCommand.execute(sqlSession, model, httpSession);
-		System.out.println("2");
 		
 		if(httpSession.getAttribute("result").equals(0)) { // 아이디 찾기 실패 
-			httpSession.invalidate();
-			System.out.println("3");
 			return "lookupfail";
 			
 		}else {
-			System.out.println("4");
 			return "lookupidpop";	
 		}
 	}
 	
-//	@RequestMapping("lookuppwfunction/")
-//	public String lookuppwfunction (Model model, HttpServletRequest request, HttpSession httpSession) {
-//
-//		return "lookuppwpop";
-//	}
+	@RequestMapping("/lookuppwfunction")
+	public String lookuppwfunction (Model model, HttpServletRequest request, HttpSession httpSession) {
+
+		model.addAttribute("request", request);
+		lookUpPwCommand.execute(sqlSession, model, httpSession);
+		if(httpSession.getAttribute("result").equals(0)) { // 아이디 찾기 실패 
+			return "lookupfail";
+			
+		}else {
+			return "lookuppwpop";	
+		}
+	}
 
 }
-
-//    case("/lookupidfunction.wd"):  // 아이디 찾기 기능
-//  		command = new LookUpIdCommand();
-//			command.execute(request, response);		
-//			hsession = request.getSession(true);
-//			String lookupresultid = (String)hsession.getAttribute("lookupresult");
-//
-//			if(lookupresultid.equals("")) { // 아이디 찾기 실패
-//				viewPage ="lookupfail.jsp";
-//			}else{ 	// 아이디 찾기 실패
-//				hsession.setAttribute("lookupresult", lookupresultid);
-//				viewPage ="lookupidpop.jsp";					
-//			} 
-//			break;
-//			
-//    case("/lookuppwfunction.wd"):  // 비밀번호 찾기 기능
-//  	  	command = new LookUpPwCommand();
-//    		command.execute(request, response);
-//    		
-//    		hsession = request.getSession(true);
-//			String lookupresultpw = (String)hsession.getAttribute("lookupresult");
-//
-//			if(lookupresultpw.equals("")) { // 비밀번호 찾기 성공
-//				viewPage ="lookupfail.jsp";
-//			}else{ 	// 비밀번호 찾기 실패
-//				hsession.setAttribute("lookupresult", lookupresultpw);
-//				viewPage ="lookuppwpop.jsp";
-//				
-//			} 
-//			break;

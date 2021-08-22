@@ -29,12 +29,13 @@ public class SignUpCommand implements BCommand_new {
 		String userTel = request.getParameter("usertel");
 		String userEmail = request.getParameter("useremail");
 		String userName = request.getParameter("username");
+		String userPwquiz = request.getParameter("userpwquiz");
 
 		SignUpDao signUpDao = sqlSession.getMapper(SignUpDao.class);
 		int checkID = signUpDao.idCheck(userId);
 		
 		if (checkID == 0) { // 가입 성공
-			signUpDao.signupDao(userId, userPw, userTel, userEmail, userName);
+			signUpDao.signupDao(userId, userPw, userTel, userEmail, userName, userPwquiz);
 			
 		}else { // 중복된 아이디가 있어 가입 불가 =
 			

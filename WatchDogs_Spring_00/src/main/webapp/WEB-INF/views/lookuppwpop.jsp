@@ -6,9 +6,9 @@
     %>   
 <!DOCTYPE html>
 <html>
-    <head>
+   <head>
         <title> 아이디 찾기 </title>
-        <link rel="stylesheet" href="style.css">           
+        <link rel="stylesheet" href="resources/css/style.css">           
     </head>
 
     <body>
@@ -24,12 +24,11 @@
                 
 <!--                 아이콘 구역 -->
                 <div class="icon">
-                    <a href="home.jsp"> <img src="images/logo.png" width="150px" height="100px" alt="WatchDogs"></a>
+                    <a href="home"> <img src="resources/img/logo.png" width="150px" height="100px" alt="WatchDogs"></a>
                 </div>
                 <br>
-                
  <!--                id찾기 폼-->
-                <form id="left" action="lookupidfunction.wd" class="input-group2" method="post">
+                <form id="left" action="lookupidfunction" class="input-group2" method="post">
                     <input type="text" name="username" class="input-field" placeholder="이름" required>
                     <input type="email" name="useremail" class="input-field" placeholder="이메일" required>  
 
@@ -37,22 +36,21 @@
                 </form>               
                 
  <!--                pw찾기 폼-->
-                <form id="right" class="input-group2" method="post">                
-                	<input type="text" id="userid" class="input-field" placeholder="아이디" required>  
-                	<br><br>
+                <form id="right" action="lookuppwfunction" class="input-group2" method="post">                
+                	<input type="text" name="userid" class="input-field" placeholder="아이디" required> 
+                	<br><br> 
+                	<font size="2px"> 질문 : </font> 
                 	<select name="language" >
-					    <option value="none">=== 선택 ===</option>
-					    <option value="korean" selected>한국어</option>
-					    <option value="english">영어</option>
-					    <option value="chinese">중국어</option>
-					    <option value="spanish">스페인어</option>
-					</select>              	 
-                	<input type="text" id="userpwquiz" class="input-field" placeholder="질문의 대답을 입력해 주세요." required>                	 
-                    <button class="submit">다음</button>  
-                   
+					    <option value="none" selected>===== 질문을 선택해 주세요 =====</option>
+					    <option value="quiz_shcool">태어난 초등학교는?</option>
+					    <option value="quiz_singer">가장 좋아하는 가수는?</option>
+					    <option value="quiz_father">아버지의 이름은?</option>
+					</select>               	 
+                	<input type="text" name="userpwquiz" class="input-field" placeholder="질문의 대답을 입력해 주세요." required>                	 
+                    <button type="submit" class="submit">다음</button>  
+                   	
                 </form>
-                
-                
+
             </div>            
         </div>
         

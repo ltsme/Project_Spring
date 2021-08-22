@@ -35,15 +35,18 @@
  <!--                pw찾기 폼-->
                 <form id="right" action="lookuppwfunction" class="input-group2" method="post">                
                 	<input type="text" name="userid" class="input-field" placeholder="아이디" required> 
-                	<br><br> 
-                	<font size="2px"> 질문 : </font> <select name="language"  >
-					    <option value="none">===== 질문을 선택해 주세요 =====</option>
-					    <option value="quiz_shcool" selected>태어난 초등학교는?</option>
-					    <option value="quiz_singer">가장 좋아하는 가수는?</option>
-					    <option value="quiz_father">아버지의 이름은?</option>
-					</select>               	 
+                	<div class="input-filed">
+                	<font size="2px"> 질문 : </font>
+	                	<select name="language"  >
+						    <option value="none">===== 질문을 선택해 주세요 =====</option>
+						    <option value="quiz_shcool" selected>태어난 초등학교는?</option>
+						    <option value="quiz_singer">가장 좋아하는 가수는?</option>
+						    <option value="quiz_father">아버지의 이름은?</option>
+						</select>  
+					</div>
+        	 		<br>
                 	<input type="text" name="userpwquiz" class="input-field" placeholder="질문의 대답을 입력해 주세요." required>                	 
-                    <button type="submit" class="submit">다음</button>  
+                    <button class="submit">비밀번호 찾기</button>  
                    
                 </form>
 
@@ -70,5 +73,4 @@
 	            
 	    </script>
     </body>
-</html> 
-
+</html>

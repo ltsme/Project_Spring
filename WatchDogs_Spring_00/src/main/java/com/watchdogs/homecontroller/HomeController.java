@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
-	
-	// 처음 실행되는 컨트롤러
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -31,7 +30,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );	
 	
-		// 세션 초기화 (처음 실행 시 수행)
+		// 아이디, 유저 타입 초기화 (실행 시 한번 수행)
 		Object initialValue = "";
 		
 		httpSession.setAttribute("userid", initialValue);
@@ -39,4 +38,6 @@ public class HomeController {
 		
 		return "home";
 	}
+
+
 } // HomeController

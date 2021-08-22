@@ -7,9 +7,9 @@
     
 <!DOCTYPE html>
 <html>
-    <head>
+   <head>
         <title> 아이디 찾기 </title>
-        <link rel="stylesheet" href="style.css">           
+        <link rel="stylesheet" href="resources/css/style.css">           
     </head>
 
     <body>
@@ -25,10 +25,9 @@
                 
 <!--                 아이콘 구역 -->
                 <div class="icon">
-                    <a href="home.jsp"><img src="images/logo.png" width="150px" height="100px" alt="WatchDogs"></a>
+                    <a href="home"> <img src="resources/img/logo.png" width="150px" height="100px" alt="WatchDogs"></a>
                 </div>
                 <br>
-                
  <!--                id찾기 폼-->
                 <form id="left" action="lookupidfunction" class="input-group2" method="post">
                     <input type="text" name="username" class="input-field" placeholder="이름" required>
@@ -39,12 +38,19 @@
                 
  <!--                pw찾기 폼-->
                 <form id="right" action="lookuppwfunction" class="input-group2" method="post">                
-                	<input type="text" id="userid" class="input-field" placeholder="아이디" required>                	 
-                    <button class="submit">다음</button>  
+                	<input type="text" name="userid" class="input-field" placeholder="아이디" required> 
+                	<br><br> 
+                	<font size="2px"> 비밀번호 힌트 : </font> <select name="language"  >
+					    <option value="none">===== 질문을 선택해 주세요 =====</option>
+					    <option value="quiz_shcool" selected>태어난 초등학교는?</option>
+					    <option value="quiz_singer">가장 좋아하는 가수는?</option>
+					    <option value="quiz_father">아버지의 이름은?</option>
+					</select>               	 
+                	<input type="text" name="userpwquiz" class="input-field" placeholder="질문의 대답을 입력해 주세요." required>                	 
+                    <button type="submit" class="submit">다음</button>  
                    
                 </form>
-                
-                
+
             </div>            
         </div>
         

@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 
 import com.watchdogs.command.home.BCommand_new;
 import com.watchdogs.dao.BListDao;
-import com.watchdogs.dao.LoginCheckDao;
+import com.watchdogs.dao.DaoLoginCheck;
 import com.watchdogs.dto.BListDto;
 import com.watchdogs.dto.BLoginCheckDto;
 import com.watchdogs.dto.DtoAdmin;
@@ -30,12 +30,12 @@ public class LoginCheckCommand implements BCommand_new {
 		String userId = request.getParameter("userid");
 		String userPw = request.getParameter("userpw");
 		
-		LoginCheckDao loginCheckDao = sqlSession.getMapper(LoginCheckDao.class);
-		ArrayList<DtoUser> dtoUser = loginCheckDao.logincheckdaouser(userId, userPw);
+		DaoLoginCheck DaologinCheck = sqlSession.getMapper(DaoLoginCheck.class);
+		ArrayList<DtoUser> dtoUser = DaologinCheck.logincheckdaouser(userId, userPw);
 		
 		if(dtoUser.size() == 0) { // 유저 로그인 실패
 			
-			ArrayList<DtoAdmin> dtoAdmin = loginCheckDao.logincheckdaoadmin(userId, userPw);
+			ArrayList<DtoAdmin> dtoAdmin = DaologinCheck.logincheckdaoadmin(userId, userPw);
 
 			if(dtoAdmin.size() == 0) { // 관리자 로그인 실패 
 				httpSession.setAttribute("result", 0);

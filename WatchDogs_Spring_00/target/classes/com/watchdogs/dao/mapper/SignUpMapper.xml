@@ -6,7 +6,7 @@
 <mapper namespace="com.watchdogs.dao.SignUpDao">
 
 	<select id="signupDao">
-		INSERT INTO USER (USERID, USERPW, USERTEL, USEREMAIL, USERNAME, USERDATE) VALUES (#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, now())
+		INSERT INTO USER (USERID, USERPW, USERTEL, USEREMAIL, USERNAME, USERDATE, USERPWQUIZ) VALUES (#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, now(), #{param6})
 	</select>
 	
  	<select id="idCheck" resultType="int">

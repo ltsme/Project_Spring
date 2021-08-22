@@ -15,7 +15,7 @@ import com.watchdogs.dto.BLoginCheckDto;
 import com.watchdogs.dto.DtoAdmin;
 import com.watchdogs.dto.DtoUser;
 
-public interface LoginCheckDao {
+public interface DaoLoginCheck {
 	
 	//유저 로그인
 	public ArrayList<DtoUser> logincheckdaouser(String userid, String userpw);

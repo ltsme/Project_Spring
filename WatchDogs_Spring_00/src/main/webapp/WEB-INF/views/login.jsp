@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>  
+    pageEncoding="UTF-8"%>
+<!-- 	ID, 유저 타입을 웹 내에서 계속 돌려 줌 -->  
     
 <!DOCTYPE html>
 <html>
@@ -20,21 +21,21 @@
                     <input type="text" name="userid" class="input-field" placeholder="아이디" autocomplete="off" required>
                     <input type="password" name="userpw" class="input-field" placeholder="비밀번호" autocomplete="off" required>
                     <button class="submit" type="submit">로그인</button>
-                    <a href="lookupidpw" target="_blank">아이디 / 비밀번호 찾기</a>
+                
                 </form>
-                
-                
-            </div> <!-- form-wrap -->  
+            </div>         
             
+            <br><br>
+
 			<div class="Foot">
 				<hr class="hide">
-				WatchDogs Corp. </hr>
+				WatchDogs Corp.
 				|
-				<a href="help"
+				<a href="help" class="link_custom" target="_blank"
 					data-tiara-action-name="고객센터">고객센터</a>
-			</div> <!-- foot -->
-			
-        </div> <!-- wrap -->       
+			</div>
+        </div>
+       
     </body>
 </html> 
 
