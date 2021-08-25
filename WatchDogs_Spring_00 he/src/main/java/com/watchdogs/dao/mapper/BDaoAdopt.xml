@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.watchdogs.dao.BDaoAdopt">
+<!-- 	<select id="listDao" resultType="com.springlec.watchdogs00.dto.ContentDto">
+		SELECT * FROM USERINFO ORDER BY SEQNO DESC
+	</select>
+
+	<select id="viewDao" resultType="com.springlec.watchdogs00.dto.ContentDto">
+		SELECT * FROM USERINFO WHERE SEQNO = #{param1}
+	</select>
+
+	<insert id="writeDao">
+		INSERT INTO USERINFO (NAME, TELNO, ADDRESS, EMAIL, RELATION) VALUES(#{param1}, #{param2}, #{param3}, #{param4}, #{param5})
+	</insert>
+
+	<update id="modifyDao">
+		UPDATE USERINFO SET NAME = #{param1}, TELNO = #{param2}, ADDRESS = #{param3}, EMAIL = #{param4}, RELATION = #{param5} WHERE SEQNO = #{param6} 
+	</update>
+
+	<delete id="deleteDao">
+		DELETE USERINFO WHERE SEQNO = #{param1}
+	</delete>
+	
+	<select id="listQuery" parameterType="String" resultType="com.springlec.watchdogs00.dto.ContentDto">
+		SELECT * FROM USERINFO WHERE ${param1} LIKE CONCAT('%', #{param2}, '%')
+	</select> -->
+	
+	
+	
+	
+	
+	
+	
+	                    <!-- adoptwait 부분-->
+	         
+	<select id="adoptwait" resultType="com.watchdogs.dto.BDtoAdopt">
+		SELECT DOGID, DOGNAME, DOGMF, DOGAGE, DOGDATE, DOGTRAINCOMM, DOGADOPTST, DOGTYPE, DOGFILEPATH, DOGTRNAME FROM DOG WHERE DOGADOPTST LIKE '입양가능' LIMIT ${param1},${param2};
+	</select>
+	
+	<select id="adoptwait_02"  parameterType="int" resultType="com.watchdogs.dto.BDtoAdopt">
+        SELECT DOGID, DOGNAME, DOGMF, DOGAGE, DOGDATE, DOGTRAINCOMM, DOGADOPTST, DOGTYPE, DOGFILEPATH, DOGTRNAME FROM DOG WHERE DOGID = #{param1};
+	</select>
+
+
+	<insert id="adoptapply" parameterType="String">
+		UPDATE DOG SET DOGADOPTST='입양진행중' WHERE DOGID = #{param1};
+	</insert>
+
+	
+
+                 <!-- adoptwait 끝-->
+	         	
+	         	
+	         	
+	                    <!-- adoptproceeding 부분-->
+	
+	<select id="adoptproceeding" resultType="com.watchdogs.dto.BDtoAdopt">
+		SELECT DOGID, DOGNAME, DOGMF, DOGAGE, DOGDATE, DOGTRAINCOMM, DOGADOPTST, DOGTYPE, DOGFILEPATH, DOGTRNAME FROM DOG WHERE DOGADOPTST LIKE '입양진행중' LIMIT ${param1},${param2};
+	</select>
+	
+	<select id="adoptproceeding_02"  parameterType="int" resultType="com.watchdogs.dto.BDtoAdopt">
+        SELECT DOGID, DOGNAME, DOGMF, DOGAGE, DOGDATE, DOGTRAINCOMM, DOGADOPTST, DOGTYPE, DOGFILEPATH, DOGTRNAME FROM DOG WHERE DOGID = #{param1};
+	</select>
+	
+	                    <!-- adoptcomplete 부분-->
+	
+	<select id="adoptcomplete" resultType="com.watchdogs.dto.BDtoAdopt">
+		SELECT DOGID, DOGNAME, DOGMF, DOGAGE, DOGDATE, DOGTRAINCOMM, DOGADOPTST, DOGTYPE, DOGFILEPATH, DOGTRNAME FROM DOG WHERE DOGADOPTST LIKE '입양완료' LIMIT ${param1},${param2};
+	</select>
+	
+	<select id="adoptcomplete_02"  parameterType="int" resultType="com.watchdogs.dto.BDtoAdopt">
+        SELECT DOGID, DOGNAME, DOGMF, DOGAGE, DOGDATE, DOGTRAINCOMM, DOGADOPTST, DOGTYPE, DOGFILEPATH, DOGTRNAME FROM DOG WHERE DOGID = #{param1};
+	</select>
+	
+	                    <!-- adopttraining 부분-->
+	
+	<select id="adopttraining" resultType="com.watchdogs.dto.BDtoAdopt">
+		SELECT DOGID, DOGNAME, DOGMF, DOGAGE, DOGDATE, DOGTRAINCOMM, DOGADOPTST, DOGTYPE, DOGFILEPATH, DOGTRNAME FROM DOG WHERE DOGADOPTST LIKE '훈련중' LIMIT ${param1},${param2};
+	</select>
+	
+	<select id="adopttraining_02"  parameterType="int" resultType="com.watchdogs.dto.BDtoAdopt">
+        SELECT DOGID, DOGNAME, DOGMF, DOGAGE, DOGDATE, DOGTRAINCOMM, DOGADOPTST, DOGTYPE, DOGFILEPATH, DOGTRNAME FROM DOG WHERE DOGID = #{param1};
+	</select>
+	
+	
+	
+	                    <!-- adoptsearch 부분-->
+	
+	<select id="adoptsearch"  parameterType="String" resultType="com.watchdogs.dto.BDtoAdopt">                                     
+	SELECT DOGID, DOGNAME, DOGMF, DOGAGE, DOGDATE, DOGTRAINCOMM, DOGADOPTST, DOGTYPE, DOGFILEPATH, DOGTRNAME FROM DOG WHERE ${param2} LIKE CONCAT('%',#{param1},'%') AND DOGADOPTST LIKE CONCAT('%',#{param3},'%');
+	</select>
+
+  	<select id="getcount" parameterType="string" resultType="int">
+	SELECT COUNT(*) FROM DOG WHERE DOGADOPTST LIKE CONCAT('%',#{param1},'%');
+	</select>   
+
+</mapper>
+    

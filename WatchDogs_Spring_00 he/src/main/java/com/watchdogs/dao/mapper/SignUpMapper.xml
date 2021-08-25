@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.watchdogs.dao.SignUpDao">
+
+	<select id="signupDao">
+		INSERT INTO USER (USERID, USERPW, USERTEL, USEREMAIL, USERNAME, USERDATE, USERPWQUIZ) VALUES (#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, now(), #{param6})
+	</select>
+	
+ 	<select id="idCheck" resultType="int">
+    	SELECT COUNT(USERID) FROM USER WHERE USERID = #{param1}
+    </select> 
+
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.watchdogs.dao.NoticeDao">
+ 
+	 <select id="noticelist" resultType="com.watchdogs.dto.NoticeDto">
+		SELECT NOID, ADID, NOTITLE, NOCONTENT, NODATE, NOHIT, NODELDATE FROM NOTICE WHERE NODELDATE IS NULL ORDER BY NOID DESC LIMIT #{param1}, #{param2}
+		 <!-- SELECT * FROM REVIEW  -->
+	 </select>  
+	 
+	 <select id="noticedetail" resultType="com.watchdogs.dto.NoticeDto">
+		SELECT NOID, ADID, NOTITLE, NOCONTENT,  NODATE, NOHIT FROM NOTICE WHERE NOID = #{param1} AND NODELDATE IS NULL
+			
+		<!-- SELECT * FROM REVIEW WHERE REID = #{param1} --> 
+	</select> 
+	
+	<select id="countTotalRows" resultType="int">
+		SELECT COUNT(*) FROM NOTICE WHERE NODELDATE IS NULL
+	</select>
+	<!-- 조회수 -->
+	<update id="countHit">
+		UPDATE NOTICE SET NOHIT = NOHIT + 1 WHERE NOID = #{param1}
+	</update>
+	
+	<!-- 조건검색 -->
+	<select id="noticeListQuery" resultType="com.watchdogs.dto.NoticeDto">
+		SELECT NOID, ADID, NOTITLE, NOCONTENT, NODATE, NOHIT, NODELDATE FROM NOTICE WHERE NODELDATE IS NULL AND ${param1} LIKE CONCAT('%',#{param2},'%') ORDER BY NOID DESC LIMIT #{param3}, #{param4}
+	 </select>
+	<!-- select * from address where relation like '%친구%' -->
+	
+	<select id="listQueryCountTotalRows" resultType="int">
+		SELECT COUNT(*) FROM NOTICE WHERE NODELDATE IS NULL AND ${param1} LIKE CONCAT('%',#{param2},'%')
+	</select>
+	
+</mapper>
