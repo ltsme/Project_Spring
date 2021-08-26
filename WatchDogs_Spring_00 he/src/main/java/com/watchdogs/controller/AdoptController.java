@@ -135,32 +135,4 @@ public class AdoptController {
 		command.execute(sqlSession, model,httpSession);
 		return "/adopttraining";
 	}
-	
-	@RequestMapping("/adoptimginsert")
-	public String adoptimginsert_wd(HttpServletRequest request, Model model) {
-	
-		command = new BAdoptSearchcommand();
-		command.execute(sqlSession, model,httpSession);
-		return "/adoptimginsert";
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

@@ -48,51 +48,6 @@ textbox{
 
 <body>
 
-<div id="hello_wrap">
-	
-	
-<script type="text/javascript" src="/js/jquery.touchSlider.js"></script>
-<script type="text/javascript">
-//<![CDATA[
-$(document).ready(function() {
-	$("#mb_slide").touchSlider({
-		view : 1,
-		autoplay : {
-			enable : true,
-			pauseHover : true,
-			interval : 8000,
-		},
-		btn_prev : $("#mb_slide").next().find(".btn_prev"),
-		btn_next : $("#mb_slide").next().find(".btn_next"),
-	});
-});
-//]]>
-</script>
-
-    <script>
-    $(window).scroll(function(){
-      var sticky = $('.nav'),
-          scroll = $(window).scrollTop();
-
-      if (scroll >= 200) sticky.addClass('fixed');
-      else sticky.removeClass('fixed');
-    });
-
-    $(function (){
-        var $category = $("#category");
-
-        $("#menu_open").on("click", function() {
-            $category.css("display","block");
-        });
-
-        $("#category .close_btn").on("click", function(){
-            $category.css("display","none");
-        });
-    });
-    </script>
-</div>
-
-
 	<!-- 중간 내용 시작 -->
 <div id="wrapper">
 

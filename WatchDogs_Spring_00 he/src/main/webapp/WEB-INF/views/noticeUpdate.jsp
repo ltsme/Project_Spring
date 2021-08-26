@@ -19,63 +19,6 @@
 <div id="hello_wrap">
 
 <!-- 상단 시작 { -->
-	
-        
-	
-	<style>
-		#must_read{background-color: #fc6; border-color: #ebccd1; text-align: center }
-		#must_read h3{color: #a94442; font-weight: 400; padding: 20px 0; }
-		
-		.top_banner{width:1050px; margin:0 auto; margin-top:50px}
-		.top_banner td{}
-	</style>
-	
-	<section id="must_read">
-	    <h3> </h3>
-	</section>
-	
-	
-<script type="text/javascript" src="/js/jquery.touchSlider.js"></script>
-<script type="text/javascript">
-//<![CDATA[
-$(document).ready(function() {
-	$("#mb_slide").touchSlider({
-		view : 1,
-		autoplay : {
-			enable : true,
-			pauseHover : true,
-			interval : 8000,
-		},
-		btn_prev : $("#mb_slide").next().find(".btn_prev"),
-		btn_next : $("#mb_slide").next().find(".btn_next"),
-	});
-});
-//]]>
-</script>
-
-    <script>
-    $(window).scroll(function(){
-      var sticky = $('.nav'),
-          scroll = $(window).scrollTop();
-
-      if (scroll >= 200) sticky.addClass('fixed');
-      else sticky.removeClass('fixed');
-    });
-
-    $(function (){
-        var $category = $("#category");
-
-        $("#menu_open").on("click", function() {
-            $category.css("display","block");
-        });
-
-        $("#category .close_btn").on("click", function(){
-            $category.css("display","none");
-        });
-    });
-    </script>
-</div>
-
 
 	<!-- 중간 내용 시작 -->
 <div id="wrapper">
